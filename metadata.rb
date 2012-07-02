@@ -1,5 +1,5 @@
-maintainer        "Opscode, Inc."
-maintainer_email  "cookbooks@opscode.com"
+maintainer        "Gerhard Lazu"
+maintainer_email  "gerhard@lazu.co.uk"
 license           "Apache 2.0"
 description       "Installs and configures RabbitMQ server"
 version           "1.5.0"
