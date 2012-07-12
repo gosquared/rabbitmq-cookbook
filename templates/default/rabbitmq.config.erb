@@ -6,6 +6,6 @@
     {vm_memory_high_watermark, <%= node[:rabbitmq][:vm_memory_high_watermark] %>},
     {disk_free_limit, {<%= node[:rabbitmq][:disk_free_limit] %>}}<% if node[:rabbitmq][:cluster_nodes].any? -%>,
     {cluster_nodes, [<%= node[:rabbitmq][:cluster_nodes].map { |node| "'#{node}'" }.join(", ") %>]}
-<% end -%>
+<% end %>
   ]}
 ].
