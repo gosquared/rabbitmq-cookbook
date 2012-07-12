@@ -2,7 +2,7 @@ default[:rabbitmq][:version] = "2.8.4*"
 
 # Allows you to overwrite the hostname
 #
-default[:rabbitmq][:hostname]  = fqdn
+default[:rabbitmq][:hostname]  = (node[:host] or fqdn)
 #
 # The node name should be unique per erlang-node-and-machine combination. To
 # run multiple nodes, see the clustering guide.
