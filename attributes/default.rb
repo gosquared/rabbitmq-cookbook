@@ -1,4 +1,4 @@
-default[:rabbitmq][:version] = "2.8.4*"
+default[:rabbitmq][:version] = "2.8.5*"
 
 # Allows you to overwrite the hostname
 #
