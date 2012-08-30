@@ -1,12 +1,11 @@
-default[:rabbitmq][:version] = "2.8.5*"
+set[:rabbitmq][:version] = "2.8.6"
 
 # Allows you to overwrite the hostname
-#
 default[:rabbitmq][:hostname]  = (node[:host] or fqdn)
 #
 # The node name should be unique per erlang-node-and-machine combination. To
 # run multiple nodes, see the clustering guide.
-default[:rabbitmq][:nodename]  = "rabbit@#{rabbitmq[:hostname]}"
+default[:rabbitmq][:nodename]  = "rabbit@#{node[:rabbitmq][:hostname]}"
 #
 # Defaults to the empty string - meaning bind to all network interfaces. This
 # can be changed if you only want to bind to one network interface.
@@ -18,7 +17,7 @@ default[:rabbitmq][:pidpath]   = "/var/run"
 default[:rabbitmq][:config]    = "/etc/rabbitmq"
 default[:rabbitmq][:logdir]    = "/var/log/rabbitmq"
 default[:rabbitmq][:basedir]   = "/var/lib/rabbitmq"
-default[:rabbitmq][:mnesiadir] = "#{rabbitmq[:basedir]}/mnesia"
+default[:rabbitmq][:mnesiadir] = "#{node[:rabbitmq][:basedir]}/mnesia"
 
 # Flow Control
 #
@@ -34,7 +33,7 @@ default[:rabbitmq][:mnesiadir] = "#{rabbitmq[:basedir]}/mnesia"
 # cause double the amount of memory to be used (by default, 80% of RAM). It is
 # strongly recommended that OS swap or page files are enabled.
 #
-# IT IS ADVISED YOU DO NOT SET THE THRESHOLD ABOVE 50% OF YOUR INSTALLED RAM
+# DO NOT SET THE THRESHOLD ABOVE 0.5 OF AVAILABLE RAM
 default[:rabbitmq][:vm_memory_high_watermark] = "0.4"
 #
 # RabbitMQ can also block producers when free disk space drops below a certain
@@ -127,5 +126,5 @@ default[:rabbitmq][:plugins] = {}
 # on Unix systems.
 #
 default[:rabbitmq][:cookie]         = false
-default[:rabbitmq][:cluster_config] = "/etc/rabbitmq/rabbitmq_cluster.config"
+default[:rabbitmq][:cluster_config] = "#{node[:rabbitmq][:config]}/rabbitmq_cluster.config"
 default[:rabbitmq][:cluster_nodes]  = []

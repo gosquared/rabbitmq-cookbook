@@ -10,9 +10,11 @@ unless node[:rabbitmq][:deb]
   end
 
   apt_package "rabbitmq-server" do
-    version node[:rabbitmq][:version]
+    version "#{node[:rabbitmq][:version]}*"
+    options "--force-yes"
     action [:add, :hold]
     keep_conf true
+    service "rabbitmq"
   end
 end
 
