@@ -1,4 +1,4 @@
-set[:rabbitmq][:version] = "2.8.7"
+set[:rabbitmq][:version] = "3.0.1"
 
 # Allows you to overwrite the hostname
 default[:rabbitmq][:hostname]  = (node[:host] or fqdn)
